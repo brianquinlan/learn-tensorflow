@@ -31,8 +31,7 @@ validation_targets = randomized_data.tail(verification_size)[[TARGET]]
 
 STEPS = 5000
 BATCH_SIZE = 5
-periods = 50
-steps_per_period = STEPS / periods
+periods = 1
 
 feature_columns = [
     layers.sparse_column_with_keys(
@@ -41,6 +40,7 @@ feature_columns = [
 
 
 linear_regressor = learn.LinearRegressor(
+    optimizer=tensorflow.train.GradientDescentOptimizer(0.05),
     feature_columns=feature_columns)
 
 def input_fn(features, target=None):
