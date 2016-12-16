@@ -24,7 +24,8 @@ def get_targets(dataframe):
 
 
 data = pandas.read_csv(
-    open('data.csv'), dtype={'value': numpy.float32,
+    open('data.csv'), dtype={'value1': numpy.float32,
+                             'value2': numpy.float32,
                              'positive': bool}, sep=',')
 randomized_data = data.reindex(numpy.random.permutation(data.index))
 
